@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-    <app-alert v-if="hasError" message="errore" type="danger"></app-alert>
+    <app-alert v-if="hasError" message="errore" type="danger" @close-alert="hasError = false"></app-alert>
     <h1>Home Page</h1>
 </template>
 

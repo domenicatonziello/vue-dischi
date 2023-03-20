@@ -4,7 +4,7 @@ export default {
     name: 'HomePage',
     components: { AppAlert },
     data: () => ({
-        hasError: false,
+        hasError: true,
     })
 }
 </script>

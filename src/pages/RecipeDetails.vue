@@ -1,11 +1,11 @@
 <script>
-import AppLoader from '../components/AppLoader.vue';
+
 export default {
     name: 'RecipeDetailsPage',
     data: () => ({
         isLoading: false,
     }),
-    components: { AppLoader }
+
 }
 </script>
 

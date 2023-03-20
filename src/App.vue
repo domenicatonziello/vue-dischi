@@ -8,7 +8,11 @@ export default {
 
 <template>
   <AppHeader />
-  <router-view></router-view>
+  <div class="container">
+    <main>
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <style></style>

@@ -5,13 +5,15 @@ export default {
         message: String,
         type: String
     },
-    data: () => ({})
+    data: () => ({}),
+    emits: ['close-alert']
 }
 </script>
 
 <template>
-    <div class="alert my-3" :class="`alert-${type}`" role="alert">
-        {{ message }}
+    <div class="alert  alert-dismissible fade show container mt-5" :class="`alert-${type}`" role="alert">
+        <strong>Error!</strong> {{ message }}
+        <button type="button" class="btn-close" @click="$emit('close-alert')"></button>
     </div>
 </template>
 

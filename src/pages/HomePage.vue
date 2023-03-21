@@ -6,7 +6,7 @@ export default {
     name: 'HomePage',
     components: { AppAlert },
     data: () => ({
-        hasError: true,
+        hasError: false,
         isLoading: false,
         message: '',
         recipes: []
@@ -32,26 +32,34 @@ export default {
 
 <template>
     <app-alert v-if="hasError" :message="message" type="danger" @close-alert="hasError = false"></app-alert>
-    <h1>Le nostre ricette:</h1>
-    <!-- <div v-for="recipe in recipes" :key="recipe.id" class="card" style="width: 18rem;">
-                                                                <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title">{{ recipe.name }}</h5>
-                                                                    <p class="card-text">{{ recipe.description }}</p>
-                                                                    <router-link :to="{ name: 'recipe-details', params : {id: recipe.id} }" class="btn btn-primary">Vedi</router-link>
-                                                                </div>
-                                                            </div> -->
-    <div class="card" style="width: 18rem;">
-        <img src="https://blog.giallozafferano.it/dulcisinforno/wp-content/uploads/2021/03/Carbonara-ricetta-5328.jpg"
-            class="card-img-top" alt="carbonara">
-        <div class="card-body">
-            <h5 class="card-title">Carbonara</h5>
-            <p class="card-text">Descrizione</p>
-            <router-link :to="{
-                name: 'recipe-details', params: { id: 1 }
-            }" class="btn btn-primary">Vedi</router-link>
+    <h1 class="text-warning p-3 title">Le nostre ricette:</h1>
+    <div class="row">
+        <div v-for="recipe in recipes" :key="recipe.id" class="col-4">
+            <div class="card" style="width: 18rem; height: 500px;">
+                <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.name }}</h5>
+                    <p class="card-text overflow-y-auto">{{ recipe.description }}</p>
+                    <router-link :to="{ name: 'recipe-details', params: { id: recipe.id } }"
+                        class="btn btn-primary">Vedi</router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card-text {
+    height: 200px;
+}
+
+.title {
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    text-align: center;
+}
+
+.card {
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    color: white;
+}
+</style>

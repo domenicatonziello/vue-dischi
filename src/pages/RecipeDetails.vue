@@ -38,7 +38,7 @@ export default {
         <!-- <h1 class="text-center my-5">{{ recipe.name.toUpperCase() }}</h1> -->
         <h1 class="text-center text-warning my-5"><font-awesome-icon icon="fa-solid fa-bowl-food" class="icon fa-1x" />
             Carbonara</h1>
-        <div class="row row-cols-2">
+        <div class="row">
             <div class="col-6">
                 <figure>
                     <!-- <img :src="recipe.image" class="img-fluid" :alt="recipe.name"> -->
@@ -47,15 +47,26 @@ export default {
                 </figure>
             </div>
             <div class="col-6">
+                <h3 class="text-warning">Descrizione:</h3>
                 <!-- <p class="card-text card-description">{{ recipe.description }}</p> -->
+
                 <p class="card-text card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus enim
                     earum deserunt rerum voluptates odio nulla, architecto ex ratione modi nisi omnis perferendis facere
                     reprehenderit recusandae! Nostrum, sint fuga. Cumque!</p>
+                <h3 class="text-warning">Ingredienti:</h3>
+                <ul>
+                    <li>Uova</li>
+                    <li>Pecorino</li>
+                    <li>Guanciale</li>
+                    <li>Pasta</li>
+
+                </ul>
+                <div class="d-flex justify-content-around align-items-center text-warning">
+                    <span> <font-awesome-icon icon="fa-solid fa-person" class="icon fa-2x me-2" /> 3 </span>
+                    <span><font-awesome-icon icon="fa-solid fa-clock" class="icon fa-2x me-2" /> 30min</span>
+                </div>
             </div>
 
-            <div class="col-4">
-                <font-awesome-icon icon="fa-solid fa-person" class="icon fa-1x" /> 3
-            </div>
             <div class="col-12 d-flex justify-content-end">
                 <router-link :to="{ name: 'home' }" class="btn btn-warning"><font-awesome-icon
                         icon="fa-solid fa-rotate-left" class="icon fa-1x" /> Back</router-link>

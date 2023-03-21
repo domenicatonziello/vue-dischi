@@ -6,9 +6,9 @@ import AppAlert from './components/AppAlert.vue'
 import { router } from './router';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faEye, faRotateLeft, faHourglassHalf, faBowlFood, faPerson, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faRotateLeft, faHourglassHalf, faBowlFood, faPerson, faClock, faBook, faEgg } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faEye, faRotateLeft, faHourglassHalf, faBowlFood, faPerson, faClock)
+library.add(faEye, faRotateLeft, faHourglassHalf, faBowlFood, faPerson, faClock, faBook, faEgg)
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)

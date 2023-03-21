@@ -35,9 +35,9 @@ export default {
     <app-alert v-if="hasError" @close-alert="hasError = false" type="danger" :message="message"></app-alert>
     <app-loader v-if="isLoading"></app-loader>
     <section id="recipe-detail" class="border border-warning rounded text-white p-3">
-        >
+
         <h1 class="text-center text-warning my-5"><font-awesome-icon icon="fa-solid fa-bowl-food" class="icon fa-1x" />
-            {{ recipe.name.toUpperCase() }}</h1>
+            {{ recipe.name }}</h1>
         <div class="row">
             <div class="col-6">
                 <figure>
@@ -63,8 +63,8 @@ export default {
 
                     <div> <font-awesome-icon icon="fa-solid fa-person" class="icon fa-2x me-2 text-warning ms-5" />
                         {{ recipe.number_of_person }}</div>
-                    <div><font-awesome-icon icon="fa-solid fa-clock"
-                            class="icon fa-2x me-2 text-warning ms-5" /><span>{{ recipe.time }}</span>
+                    <div><font-awesome-icon icon="fa-solid fa-clock" class="icon fa-2x me-2 text-warning ms-5" /><span>{{
+                        recipe.time }}</span>
                     </div>
                 </div>
                 <router-link :to="{ name: 'home' }" class="btn btn-warning"><font-awesome-icon

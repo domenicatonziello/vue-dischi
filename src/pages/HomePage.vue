@@ -34,9 +34,9 @@ export default {
     <app-loader v-if="isLoading"></app-loader>
     <app-alert v-if="hasError" :message="message" type="danger" @close-alert="hasError = false"></app-alert>
     <h1 class="text-warning p-3 title">Le nostre ricette:</h1>
-    <div class="row">
-        <div v-for="recipe in recipes" :key="recipe.id" class="col-4">
-            <div class="card pb-4 border border-2 border-warning" style="width: 18rem; height: 500px;">
+    <div class="row row-cols-3">
+        <div v-for="recipe in recipes" :key="recipe.id" class="col">
+            <div class="card pb-4 border border-2 border-warning" style="height: 550px;">
                 <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
                 <div class="card-body">
                     <h5 class="card-title text-warning text-capitalize">{{ recipe.name }} <font-awesome-icon

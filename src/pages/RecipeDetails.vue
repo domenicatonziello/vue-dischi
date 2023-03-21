@@ -34,7 +34,7 @@ export default {
 <template>
     <app-alert v-if="hasError" @close-alert="hasError = false" type="danger" :message="message"></app-alert>
     <app-loader v-if="loading"></app-loader>
-    <section id="recipe-detail" class="border border-warning rounded  p-3">
+    <section id="recipe-detail" class="border border-warning rounded text-white p-3">
         <!-- <h1 class="text-center my-5">{{ recipe.name.toUpperCase() }}</h1> -->
         <h1 class="text-center text-warning my-5"><font-awesome-icon icon="fa-solid fa-bowl-food" class="icon fa-1x" />
             Carbonara</h1>

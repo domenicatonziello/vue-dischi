@@ -36,7 +36,7 @@ export default {
     <h1 class="text-warning p-3 title">Le nostre ricette:</h1>
     <div class="row">
         <div v-for="recipe in recipes" :key="recipe.id" class="col-4">
-            <div class="card" style="width: 18rem; height: 500px;">
+            <div class="card pb-4 border border-2 border-warning" style="width: 18rem; height: 500px;">
                 <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
                 <div class="card-body">
                     <h5 class="card-title text-warning text-capitalize">{{ recipe.name }} <font-awesome-icon
@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-text {
-    height: 200px;
+    height: 191px;
 }
 
 .title {

@@ -9,6 +9,7 @@ export default {
 <template>
   <AppHeader />
   <div class="container">
+    <h1>Titolo</h1>
     <main>
       <router-view></router-view>
     </main>

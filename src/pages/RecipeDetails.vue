@@ -36,7 +36,8 @@ export default {
     <app-loader v-if="isLoading"></app-loader>
     <section id="recipe-detail" class="border border-warning rounded text-white p-3">
 
-        <h1 class="text-center text-warning my-5"><font-awesome-icon icon="fa-solid fa-bowl-food" class="icon fa-1x" />
+        <h1 class="text-center text-warning text-capitalize my-5"><font-awesome-icon icon="fa-solid fa-bowl-food"
+                class="icon fa-1x" />
             {{ recipe.name }}</h1>
         <div class="row">
             <div class="col-6">

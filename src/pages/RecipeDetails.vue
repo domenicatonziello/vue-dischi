@@ -11,7 +11,7 @@ export default {
     }),
     methods: {
         fetchRecipe(endpoint = null) {
-            // this.loading = true;
+            this.isLoading = true;
 
             if (!endpoint) endpoint = apiBaseUrl + '/recipes/' + this.$route.params.id;
             axios.get(endpoint).then(res => {
@@ -20,7 +20,7 @@ export default {
                 this.message = err.message;
                 this.hasError = true;
             }).then(() => {
-                this.Isloading = false;
+                this.isLoading = false;
             });
         }
     },
@@ -33,7 +33,7 @@ export default {
 
 <template>
     <app-alert v-if="hasError" @close-alert="hasError = false" type="danger" :message="message"></app-alert>
-    <app-loader v-if="loading"></app-loader>
+    <app-loader v-if="isLoading"></app-loader>
     <section id="recipe-detail" class="border border-warning rounded text-white p-3">
         <!-- <h1 class="text-center my-5">{{ recipe.name.toUpperCase() }}</h1> -->
         <h1 class="text-center text-warning my-5"><font-awesome-icon icon="fa-solid fa-bowl-food" class="icon fa-1x" />

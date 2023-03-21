@@ -8,6 +8,7 @@ export default {
     data: () => ({
         hasError: true,
         isLoading: false,
+        message: '',
         recipes: []
     }),
     methods: {
@@ -16,7 +17,7 @@ export default {
                 axios.get(apiBaseUri + '/recipes')
                     .then((res) => { this.recipes = res.data; })
                     .catch((err) => {
-                        console.error(err);
+                        this.message = err.message;
                         this.hasError = true;
                     }).then(() => {
                         this.isLoading = false;
@@ -30,16 +31,16 @@ export default {
 </script>
 
 <template>
-    <app-alert v-if="hasError" message="errore" type="danger" @close-alert="hasError = false"></app-alert>
+    <app-alert v-if="hasError" :message="message" type="danger" @close-alert="hasError = false"></app-alert>
     <h1>Le nostre ricette:</h1>
     <!-- <div v-for="recipe in recipes" :key="recipe.id" class="card" style="width: 18rem;">
-                                                    <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">{{ recipe.name }}</h5>
-                                                        <p class="card-text">{{ recipe.description }}</p>
-                                                        <router-link :to="{ name: 'recipe-details', params : {id: recipe.id} }" class="btn btn-primary">Vedi</router-link>
-                                                    </div>
-                                                </div> -->
+                                                                <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">{{ recipe.name }}</h5>
+                                                                    <p class="card-text">{{ recipe.description }}</p>
+                                                                    <router-link :to="{ name: 'recipe-details', params : {id: recipe.id} }" class="btn btn-primary">Vedi</router-link>
+                                                                </div>
+                                                            </div> -->
     <div class="card" style="width: 18rem;">
         <img src="https://blog.giallozafferano.it/dulcisinforno/wp-content/uploads/2021/03/Carbonara-ricetta-5328.jpg"
             class="card-img-top" alt="carbonara">

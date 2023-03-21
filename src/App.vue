@@ -8,11 +8,19 @@ export default {
 
 <template>
   <AppHeader />
-  <div class="container">
-    <main>
-      <router-view></router-view>
-    </main>
-  </div>
+  <section id="recipe-board" class=" py-5">
+    <div class="container">
+      <main>
+        <router-view></router-view>
+      </main>
+    </div>
+  </section>
 </template>
 
-<style></style>
+<style>
+#recipe-board {
+  background-image: url('./assets/img/background.jpg');
+  background-size: cover;
+  min-height: calc(100vh - 56px);
+}
+</style>

@@ -36,9 +36,9 @@ export default {
     <h1 class="text-warning p-3 title">Le nostre ricette:</h1>
     <div class="row row-cols-3">
         <div v-for="recipe in recipes" :key="recipe.id" class="col">
-            <div class="card pb-4 border border-2 border-warning" style="height: 550px;">
+            <div class="card pb-4 border border-2 border-warning">
                 <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
-                <div class="card-body">
+                <div class="card-body" style="height: 300px;">
                     <h5 class="card-title text-warning text-capitalize">{{ recipe.name }} <font-awesome-icon
                             icon="fa-solid fa-bowl-food" class="icon fa-1x" /></h5>
                     <p class="card-text overflow-y-auto">{{ recipe.description }}</p>

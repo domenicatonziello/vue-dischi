@@ -31,24 +31,27 @@ export default {
 </script>
 
 <template>
-    <app-loader v-if="isLoading"></app-loader>
     <app-alert v-if="hasError" :message="message" type="danger" @close-alert="hasError = false"></app-alert>
-    <h1 class="text-warning p-3 title">Le nostre ricette:</h1>
-    <div class="row row-cols-3">
-        <div v-for="recipe in recipes" :key="recipe.id" class="col">
-            <div class="card pb-4 border border-2 border-warning">
-                <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
-                <div class="card-body" style="height: 300px;">
-                    <h5 class="card-title text-warning text-capitalize">{{ recipe.name }} <font-awesome-icon
-                            icon="fa-solid fa-bowl-food" class="icon fa-1x" /></h5>
-                    <p class="card-text overflow-y-auto">{{ recipe.description }}</p>
-                    <router-link :to="{ name: 'recipe-details', params: { id: recipe.id } }"
-                        class="btn btn-warning"><font-awesome-icon icon="fa-solid fa-eye" class="icon fa-1x" />
-                        Vedi</router-link>
+    <app-loader v-if="isLoading"></app-loader>
+    <section v-else id="homepage">
+
+        <h1 class="text-warning p-3 title">Le nostre ricette:</h1>
+        <div class="row row-cols-3">
+            <div v-for="recipe in recipes" :key="recipe.id" class="col">
+                <div class="card pb-4 border border-2 border-warning">
+                    <img :src="recipe.image" class="card-img-top" :alt="recipe.name">
+                    <div class="card-body" style="height: 300px;">
+                        <h5 class="card-title text-warning text-capitalize">{{ recipe.name }} <font-awesome-icon
+                                icon="fa-solid fa-bowl-food" class="icon fa-1x" /></h5>
+                        <p class="card-text overflow-y-auto">{{ recipe.description }}</p>
+                        <router-link :to="{ name: 'recipe-details', params: { id: recipe.id } }"
+                            class="btn btn-warning"><font-awesome-icon icon="fa-solid fa-eye" class="icon fa-1x" />
+                            Vedi</router-link>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <style lang="scss" scoped>

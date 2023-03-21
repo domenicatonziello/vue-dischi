@@ -35,32 +35,24 @@ export default {
     <app-alert v-if="hasError" @close-alert="hasError = false" type="danger" :message="message"></app-alert>
     <app-loader v-if="isLoading"></app-loader>
     <section id="recipe-detail" class="border border-warning rounded text-white p-3">
-        <!-- <h1 class="text-center my-5">{{ recipe.name.toUpperCase() }}</h1> -->
+        >
         <h1 class="text-center text-warning my-5"><font-awesome-icon icon="fa-solid fa-bowl-food" class="icon fa-1x" />
-            Carbonara</h1>
+            {{ recipe.name.toUpperCase() }}</h1>
         <div class="row">
             <div class="col-6">
                 <figure>
-                    <!-- <img :src="recipe.image" class="img-fluid" :alt="recipe.name"> -->
-                    <img src="https://blog.giallozafferano.it/dulcisinforno/wp-content/uploads/2021/03/Carbonara-ricetta-5328.jpg"
-                        alt="carbonara" class="img-fluid">
+                    <img :src="recipe.image" class="img-fluid" :alt="recipe.name">
+
                 </figure>
             </div>
             <div class="col-6">
                 <h3 class="text-warning"><font-awesome-icon icon="fa-solid fa-book" class="icon " /> Descrizione:</h3>
-                <!-- <p class="card-text card-description">{{ recipe.description }}</p> -->
+                <p class="card-text card-description">{{ recipe.description }}</p>
 
-                <p class="card-text card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus enim
-                    earum deserunt rerum voluptates odio nulla, architecto ex ratione modi nisi omnis perferendis facere
-                    reprehenderit recusandae! Nostrum, sint fuga. Cumque!</p>
                 <h3 class="text-warning"><font-awesome-icon icon="fa-solid fa-egg" class="icon " /> Ingredienti:
                 </h3>
                 <ul>
-                    <li>Uova</li>
-                    <li>Pecorino</li>
-                    <li>Guanciale</li>
-                    <li>Pasta</li>
-
+                    <li v-for="ingredients in recipe.ingredient">{{ ingredients }}</li>
                 </ul>
 
 
@@ -69,9 +61,10 @@ export default {
             <div class="col-12 d-flex justify-content-between">
                 <div class="d-flex justify-content-between align-items-center">
 
-                    <div> <font-awesome-icon icon="fa-solid fa-person" class="icon fa-2x me-2 text-warning ms-5" /> 3 </div>
+                    <div> <font-awesome-icon icon="fa-solid fa-person" class="icon fa-2x me-2 text-warning ms-5" />
+                        {{ recipe.number_of_person }}</div>
                     <div><font-awesome-icon icon="fa-solid fa-clock"
-                            class="icon fa-2x me-2 text-warning ms-5" /><span>30min</span>
+                            class="icon fa-2x me-2 text-warning ms-5" /><span>{{ recipe.time }}</span>
                     </div>
                 </div>
                 <router-link :to="{ name: 'home' }" class="btn btn-warning"><font-awesome-icon

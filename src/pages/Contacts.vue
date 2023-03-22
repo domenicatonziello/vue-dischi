@@ -82,9 +82,6 @@ export default {
                 <label for="email" class="form-label">Indirizzo mail:</label>
                 <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email"
                     v-model="form.email">
-                <!-- <div v-if="errors.email" class="invalid-feedback">
-                        {{ errors.email }}
-                    </div> -->
             </div>
 
             <!-- Oggetto -->

@@ -7,42 +7,71 @@ export default {
     data: () => ({
         isLoading: false,
         message: null,
-        hasError: false,
         type: '',
-        form: emptyform
+        form: emptyform,
+        hasError: false,
+        errors: {}
     }),
     methods: {
         validateForm() {
+            this.errors = {};
+            const errors = {};
 
+            if (!this.form.email) {
+                errors.email = 'La mail è obbligatoria'
+            }
+
+            if (!this.form.object) {
+                errors.object = "L'oggetto è obbligatorio"
+            }
+
+            if (!this.form.text) {
+                errors.text = 'Il testo è obbligatorio'
+            }
+
+            this.errors = errors;
         },
         sendForm() {
             this.validateForm();
-            this.isLoading = true
-            axios.post(endpoint, this.form).then(() => {
-                event.target.form = emptyform;
-                this.message = 'Inviato con successo'
-                this.type = 'success'
-            }).catch((err) => {
-                if (err.response.status === 400) {
-                    const { errors } = err.response.data;
-                    const errormessage = [];
-                    for (let key in errors) errormessage[key] = errors[key][0];
-                    this.errors = errormessage
-                    this.type = 'danger'
-                } else
-                    this.errors = { network: 'Si è verificato un errore' }
-                this.hasError = true;
 
-            }).then(() => {
-                this.isLoading = false
-            })
+            if (!this.hasErrors) {
+                this.isLoading = true
+                axios.post(endpoint, this.form).then(() => {
+                    event.target.form = emptyform;
+                    this.message = 'Inviato con successo'
+                    this.type = 'success'
+                }).catch((err) => {
+                    if (err.response.status === 400) {
+                        const { errors } = err.response.data;
+                        const errormessage = {};
+                        for (let key in errors) errormessage[key] = errors[key][0];
+                        this.errors = errormessage
+                        this.type = 'danger'
+                    } else
+                        this.errors = { network: 'Si è verificato un errore' }
+                    this.hasError = true;
+
+                }).then(() => {
+                    this.isLoading = false
+                })
+            }
+        }
+    },
+    computed: {
+        hasErrors() {
+            return Object.keys(this.errors).length;
         }
     }
 }
 </script>
 
 <template>
-    <app-alert v-if="hasError" @close-alert="hasError = false" type="danger" :message="errors.network"></app-alert>
+    <app-alert v-if="hasErrors" @close-alert="hasError = false" type="danger">
+        <div v-if="message"> {{ message }}</div>
+        <ul v-if="hasErrors">
+            <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
+        </ul>
+    </app-alert>
     <app-loader v-if="isLoading"></app-loader>
     <section id="contacts">
         <h1>Contact</h1>
@@ -54,7 +83,7 @@ export default {
                 <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email"
                     v-model="form.email">
                 <!-- <div v-if="errors.email" class="invalid-feedback">
-                        {{ error.email }}
+                        {{ errors.email }}
                     </div> -->
             </div>
 

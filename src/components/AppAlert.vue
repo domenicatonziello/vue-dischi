@@ -2,7 +2,6 @@
 export default {
     name: 'AppAlert',
     props: {
-        message: String,
         type: String
     },
     data: () => ({}),
@@ -12,7 +11,7 @@ export default {
 
 <template>
     <div class="alert  alert-dismissible fade show container mt-5" :class="`alert-${type}`" role="alert">
-        <strong>Error!</strong> {{ message }}
+        <slot></slot>
         <button type="button" class="btn-close" @click="$emit('close-alert')"></button>
     </div>
 </template>

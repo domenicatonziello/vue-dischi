@@ -31,7 +31,9 @@ export default {
 </script>
 
 <template>
-    <app-alert v-if="hasError" :message="message" type="danger" @close-alert="hasError = false"></app-alert>
+    <app-alert v-if="hasError" type="danger" @close-alert="hasError = false">
+        <div v-if="message">{{ message }}</div>
+    </app-alert>
     <app-loader v-if="isLoading"></app-loader>
     <section v-else id="homepage">
 

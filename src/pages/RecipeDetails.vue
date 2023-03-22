@@ -32,7 +32,9 @@ export default {
 </script>
 
 <template>
-    <app-alert v-if="hasError" @close-alert="hasError = false" type="danger" :message="message"></app-alert>
+    <app-alert v-if="hasError" @close-alert="hasError = false" type="danger">
+        <div v-if="message">{{ message }}</div>
+    </app-alert>
     <app-loader v-if="isLoading"></app-loader>
     <section v-else id="recipe-detail" class="border border-warning rounded text-white p-3">
 

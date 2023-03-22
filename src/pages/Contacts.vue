@@ -30,6 +30,10 @@ export default {
             }
 
             this.errors = errors;
+
+            if (this.hasErrors) {
+                this.hasError = true;
+            }
         },
         sendForm() {
             this.validateForm();
@@ -66,7 +70,7 @@ export default {
 </script>
 
 <template>
-    <app-alert v-if="hasErrors" @close-alert="hasError = false" type="danger">
+    <app-alert v-if="hasError" @close-alert="hasError = false" type="danger">
         <div v-if="message"> {{ message }}</div>
         <ul v-if="hasErrors">
             <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
